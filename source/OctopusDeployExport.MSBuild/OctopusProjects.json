@@ -1,0 +1,14 @@
+{
+    "Projects": [
+        {
+            "Name": "MyOctopusProjectName",
+            "ApiKey": "API-Key",
+            "ServerUrl": "http://OctopusServerUrl",
+            "OutputFile": "MyOctopusProjectName.json",
+            "MaskVariables": [
+                "AdminPassword",
+                "ThumbPrint..."                
+            ]
+        }
+    ]
+}

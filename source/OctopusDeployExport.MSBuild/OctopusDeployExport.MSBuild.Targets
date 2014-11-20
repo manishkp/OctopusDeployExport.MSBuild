@@ -1,0 +1,27 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <BuildDependsOn>$(BuildDependsOn);OctopusExports;</BuildDependsOn>
+    <RebuildDependsOn>$(RebuildDependsOn);OctopusExports;</RebuildDependsOn>
+  </PropertyGroup>  
+  <Target Name="ReadOctopusProjects">
+    <JsonPeek JsonInputPath="$(MSBuildProjectDirectory)\OctopusProjects.json" JPath="$.Projects">
+      <Output TaskParameter="Result" ItemName="OctopusProjects" />
+    </JsonPeek>
+  </Target>
+  <Target Name="OctopusExports" Inputs="@(OctopusProjects)" Outputs="%(OutputFile)" DependsOnTargets="ReadOctopusProjects">
+    <PropertyGroup>
+      <OctopusFilePath>$(MSBuildProjectDirectory)\%(OctopusProjects.OutputFile)</OctopusFilePath>
+    </PropertyGroup>
+    <Message Text="Generating octopus deploy export at:$(OctopusFilePath)">
+    </Message>
+    <Exec ContinueOnError="false" WorkingDirectory="$(ProjectDir)" Command="Octo.exe export --server=%(OctopusProjects.ServerUrl) --apiKey=&quot;%(OctopusProjects.ApiKey)&quot; --type=&quot;project&quot; --name:&quot;%(OctopusProjects.Name)&quot; --filePath=&quot;$(MSBuildProjectDirectory)\%(OctopusProjects.OutputFile)&quot;" IgnoreExitCode="false" ConsoleToMSBuild="true">
+    </Exec>
+    <JsonPeek JsonContent="{Vars:%(OctopusProjects.MaskVariables)}" JPath="$.Vars">
+      <Output TaskParameter="Result" ItemName="OctopusVariables" />
+    </JsonPeek>
+    <JsonPoke JsonInputPath="$(OctopusFilePath)" Value="****" JPath="$Meta.ExportedAt">
+    </JsonPoke>
+    <JsonPoke JsonInputPath="$(OctopusFilePath)" Value="****" JPath="$.VariableSet.Variables[?(@.Name == '%(OctopusVariables.Value)')].Value">
+    </JsonPoke>
+  </Target>  
+</Project>
