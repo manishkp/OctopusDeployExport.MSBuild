@@ -3,14 +3,14 @@
     <metadata>
         <id>OctopusDeployExport.MSBuild</id>
         <version>1.0.1</version>
-        <title>OctopusDeploy project Exports</title>
+        <title>OctopusDeployExport.MSBuild</title>
         <authors>Manish Kumar</authors>
         <owners>Manish Kumar</owners>
         <licenseUrl>https://bitbucket.org/Manishkp/octopusdeployexport.msbuild/raw/867bb9bc878efc9bd2beaf6d01b99471626f8455/source/OctopusDeployExport.MSBuild/license.txt</licenseUrl>
         <projectUrl>https://bitbucket.org/Manishkp/octopusdeployexport.msbuild/</projectUrl>
         <requireLicenseAcceptance>true</requireLicenseAcceptance>
         <developmentDependency>true</developmentDependency>
-        <description>OctopusDeploy project Exports</description>
+        <description>Exports your octopus deploy project as JSON and masks the time and other passwords.</description>
         <summary>OctopusDeploy project Exports build tasks</summary>
         <releaseNotes>1.0.1: Exports your octopus deploy project as JSON and masks the time and other passwords.</releaseNotes>
         <tags>OctopusDeploy</tags>
