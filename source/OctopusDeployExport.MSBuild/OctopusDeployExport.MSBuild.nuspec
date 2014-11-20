@@ -6,22 +6,22 @@
         <title>OctopusDeploy project Exports</title>
         <authors>Manish Kumar</authors>
         <owners>Manish Kumar</owners>
-        <licenseUrl>https://bitbucket.org/Manishkp/jsonpeek.msbuild/raw/ce89c93089b2b253cc06530ed5e6c39f9e6a6d66/nugetSource/license.txt</licenseUrl>
-        <projectUrl>https://bitbucket.org/Manishkp/jsonpeek.msbuild/</projectUrl>
+        <licenseUrl>https://bitbucket.org/Manishkp/octopusdeployexport.msbuild/raw/867bb9bc878efc9bd2beaf6d01b99471626f8455/source/OctopusDeployExport.MSBuild/license.txt</licenseUrl>
+        <projectUrl>https://bitbucket.org/Manishkp/octopusdeployexport.msbuild/</projectUrl>
         <requireLicenseAcceptance>true</requireLicenseAcceptance>
         <developmentDependency>true</developmentDependency>
         <description>OctopusDeploy project Exports</description>
         <summary>OctopusDeploy project Exports build tasks</summary>
-        <releaseNotes></releaseNotes>
+        <releaseNotes>1.0.1: Exports your octopus deploy project as JSON and masks the time and other passwords.</releaseNotes>
         <tags>OctopusDeploy</tags>
         <dependencies>
           <dependency id="JsonPoke.MSBuild" version="1.0.6" />
+	        <dependency id="OctopusTools" version="2.5.10.39" />
         </dependencies>
     </metadata>
     <files>
         <file src="OctopusDeployExport.MSBuild.Targets" target="build\OctopusDeployExport.MSBuild.Targets" />
         <file src="OctopusProjects.json" target="content\OctopusProjects.json" />
-     	  <file src="..\packages\OctopusTools.2.5.10.39\Octo.exe" target="tools\Octo.exe" />     
         <file src="license.txt" target="license.txt" />
     </files>
 </package>

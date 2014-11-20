@@ -14,7 +14,7 @@
     </PropertyGroup>
     <Message Text="Generating octopus deploy export at:$(OctopusFilePath)">
     </Message>
-    <Exec ContinueOnError="false" WorkingDirectory="$(ProjectDir)" Command="Octo.exe export --server=%(OctopusProjects.ServerUrl) --apiKey=&quot;%(OctopusProjects.ApiKey)&quot; --type=&quot;project&quot; --name:&quot;%(OctopusProjects.Name)&quot; --filePath=&quot;$(MSBuildProjectDirectory)\%(OctopusProjects.OutputFile)&quot;" IgnoreExitCode="false" ConsoleToMSBuild="true">
+   <Exec ContinueOnError="false" Command="$(SolutionDir)packages\OctopusTools.2.5.10.39\Octo.exe export --server=%(OctopusProjects.ServerUrl) --apiKey=&quot;%(OctopusProjects.ApiKey)&quot; --type=&quot;project&quot; --name:&quot;%(OctopusProjects.Name)&quot; --filePath=&quot;$(MSBuildProjectDirectory)\%(OctopusProjects.OutputFile)&quot;" IgnoreExitCode="false" ConsoleToMSBuild="true">
     </Exec>
     <JsonPeek JsonContent="{Vars:%(OctopusProjects.MaskVariables)}" JPath="$.Vars">
       <Output TaskParameter="Result" ItemName="OctopusVariables" />
